@@ -54,6 +54,7 @@ p{color:var(--muted)}
 
 .grid{display:grid;gap:1.5rem;margin-top:2rem}
 .grid.two{grid-template-columns:repeat(2,1fr)}
+.grid.three{grid-template-columns:repeat(3,1fr)}
 .grid.four{grid-template-columns:repeat(4,1fr)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;transition:.25s}
 .card:hover{transform:translateY(-4px);border-color:var(--accent-soft);box-shadow:0 14px 30px rgba(31,38,48,.1)}
@@ -70,9 +71,9 @@ p{color:var(--muted)}
 .form input,.form textarea{font:inherit;color:var(--ink);padding:.8rem .9rem;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
 .form input:focus,.form textarea:focus{outline:2px solid var(--accent);border-color:transparent}
 .hp{position:absolute;left:-9999px}
-#form-status{margin:0;font-size:.92rem;min-height:1.4em}
-#form-status.ok{color:#23703f}
-#form-status.err{color:#b3392f}
+#formStatus{margin:0;font-size:.92rem;min-height:1.4em}
+#formStatus.ok{color:#23703f}
+#formStatus.err{color:#b3392f}
 
 .footer{padding:2rem 0;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted);text-align:center}
 
@@ -81,7 +82,7 @@ p{color:var(--muted)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
 
 @media (max-width:900px){
-  .hero-grid,.contact-grid,.grid.two{grid-template-columns:1fr}
+  .hero-grid,.contact-grid,.grid.two,.grid.three{grid-template-columns:1fr}
   .grid.four{grid-template-columns:repeat(2,1fr)}
   .hero-logo{order:-1}
   .hero-logo img{max-width:240px}

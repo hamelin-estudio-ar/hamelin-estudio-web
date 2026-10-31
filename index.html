@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hamelin Estudio | Desarrollo de software a medida</title>
-  <meta name="description" content="Hamelin Estudio: desarrollo de software a medida, automatizaciones, plataformas en la nube e integraciones con Inteligencia Artificial.">
-  <link rel="canonical" href="https://hamelinestudio.com.ar/">
+  <meta name="description" content="Hamelin Estudio: desarrollo de software a medida,   automatizaciones y plataformas en la nube.">  <link rel="canonical" href="https://hamelinestudio.com.ar/">
   <meta name="theme-color" content="#f6f6f4">
   <link rel="icon" href="assets/img/logo.jpg">
   <meta property="og:title" content="Hamelin Estudio">
-  <meta property="og:description" content="Software a medida, automatización, nube e IA.">
+  <meta property="og:description" content="Software a medida, automatización y plataformas en la nube.">
   <meta property="og:image" content="assets/img/logo.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,9 +33,9 @@
     <section id="inicio" class="hero">
       <div class="container hero-grid">
         <div class="hero-text">
-          <p class="eyebrow">Software · Nube · Inteligencia Artificial</p>
+          <p class="eyebrow">Software · Datos · Nube</p>
           <h1>Software a medida, <em>diseñado para escalar.</em></h1>
-          <p class="lead">Desarrollamos sistemas a medida, automatizaciones, plataformas en la nube e integraciones con IA que resuelven problemas reales de tu negocio.</p>
+          <p class="lead">Desarrollamos sistemas a medida, automatizaciones, plataformas en la nube y simulaciones interactivas que resuelven problemas reales de tu negocio.</p>
           <div class="cta">
             <a href="#contacto" class="btn">Hablemos de tu proyecto</a>
             <a href="#productos" class="btn btn-ghost">Ver soluciones</a>
@@ -66,11 +65,16 @@
       <div class="container">
         <p class="eyebrow">Productos y soluciones</p>
         <h2>Desarrollos destacados</h2>
-        <div class="grid two">
+        <div class="grid three">
           <article class="card reveal">
             <div class="icon" aria-hidden="true">🦷</div>
-            <h3>Gestión integral y CAD/CAM para laboratorios dentales</h3>
-            <p>Plataforma que centraliza órdenes de trabajo, clientes, producción y facturación, con herramientas CAD/CAM para el flujo digital del laboratorio.</p>
+            <h3>Gestión integral para laboratorios dentales</h3>
+            <p>Plataforma que centraliza órdenes de trabajo, clientes, producción y facturación del laboratorio.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true">👥</div>
+            <h3>Gemelos digitales para Recursos Humanos</h3>
+            <p>Plataforma de entrenamiento que, a partir de documentos e información real de cada persona, crea un gemelo digital con el cual interactuar en focus groups y evaluar promociones y acciones de la empresa.</p>
           </article>
           <article class="card reveal">
             <div class="icon" aria-hidden="true">📍</div>
@@ -110,13 +114,13 @@
           </ul>
         </div>
 
-        <form id="contact-form" class="form" novalidate>
-          <label>Nombre<input type="text" name="nombre" required maxlength="100" autocomplete="name"></label>
-          <label>Email<input type="email" name="email" required maxlength="150" autocomplete="email"></label>
-          <label>Mensaje<textarea name="mensaje" rows="5" required maxlength="2000"></textarea></label>
-          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit" class="btn">Enviar consulta</button>
-          <p id="form-status" role="status" aria-live="polite"></p>
+        <form id="contactForm" class="form" action="https://formspree.io/f/xbggaqyy" method="POST" novalidate>
+          <label for="name">Nombre<input type="text" id="name" name="name" required maxlength="100" autocomplete="name"></label>
+          <label for="email">Email<input type="email" id="email" name="email" required maxlength="150" autocomplete="email"></label>
+          <label for="message">Mensaje<textarea id="message" name="message" rows="5" required maxlength="2000"></textarea></label>
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" id="submitBtn" class="btn">Enviar consulta</button>
+          <p id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>

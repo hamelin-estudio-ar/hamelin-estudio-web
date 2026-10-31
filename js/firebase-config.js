@@ -10,3 +10,6 @@ export const firebaseConfig = {
 };
 
 export const isConfigured = firebaseConfig.projectId !== "REEMPLAZAR";
+
+// Endpoint de Formspree (https://formspree.io/f/xxxxxxxx) que reenvía las consultas a tu mail.
+export const formEndpoint = "https://formspree.io/f/xbggaqyy";

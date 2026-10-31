@@ -1,5 +1,4 @@
-import { firebaseConfig, isConfigured } from "./firebase-config.js";
-
+﻿
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // Menú móvil
@@ -27,59 +26,34 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-// Formulario -> Firestore (SDK cargado bajo demanda)
-const form = document.getElementById("contact-form");
-const status = document.getElementById("form-status");
-let dbPromise;
-
-function getDb() {
-  dbPromise ??= (async () => {
-    const base = "https://www.gstatic.com/firebasejs/10.14.1";
-    const { initializeApp } = await import(`${base}/firebase-app.js`);
-    const fs = await import(`${base}/firebase-firestore.js`);
-    return { db: fs.getFirestore(initializeApp(firebaseConfig)), fs };
-  })();
-  return dbPromise;
-}
+// Formulario de contacto -> Formspree
+const form = document.getElementById("contactForm");
+const submitBtn = document.getElementById("submitBtn");
+const formStatus = document.getElementById("formStatus");
 
 function setStatus(msg, cls) {
-  status.textContent = msg;
-  status.className = cls || "";
+  formStatus.textContent = msg;
+  formStatus.className = cls || "";
 }
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const data = Object.fromEntries(new FormData(form));
-  if (data.website) return; // honeypot anti-spam
-
-  const nombre = data.nombre.trim();
-  const email = data.email.trim();
-  const mensaje = data.mensaje.trim();
-  if (!nombre || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !mensaje) {
-    setStatus("Completá todos los campos con un email válido.", "err");
-    return;
-  }
-  if (!isConfigured) {
-    setStatus("El formulario aún no está configurado. Escribinos por email.", "err");
-    return;
-  }
-
-  const btn = form.querySelector("button");
-  btn.disabled = true;
-  setStatus("Enviando…");
+  submitBtn.disabled = true;
+  setStatus("Enviando...");
   try {
-    const { db, fs } = await getDb();
-    await fs.addDoc(fs.collection(db, "consultas"), {
-      nombre, email, mensaje,
-      createdAt: fs.serverTimestamp(),
-      origen: location.hostname
+    const response = await fetch("https://formspree.io/f/xbggaqyy", {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
     });
+    if (!response.ok) throw new Error(`Formspree respondió ${response.status}`);
     form.reset();
-    setStatus("¡Gracias! Recibimos tu consulta y te responderemos pronto.", "ok");
+    setStatus("¡Gracias por tu consulta! Te responderemos a la brevedad.", "ok");
   } catch (err) {
     console.error(err);
-    setStatus("No pudimos enviar tu consulta. Probá por email.", "err");
+    setStatus("No pudimos enviar tu consulta. Intentá de nuevo o escribinos a contacto.hamelinestudio@gmail.com.", "err");
   } finally {
-    btn.disabled = false;
+    submitBtn.disabled = false;
   }
 });
+
